@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_corona_virus_global_stats_daily FOLDER = '/2 - integration' AS SELECT DISTINCT cast(date AS DATE) AS date, confirmed AS confirmed, deaths AS deaths, recovered AS recovered FROM FLATTEN bv_corona_virus_global_stats AS v ( v.history);
+
+ALTER VIEW iv_corona_virus_global_stats_daily
+ LAYOUT (bv_corona_virus_global_stats = [20, 20, 369, 666]);
+

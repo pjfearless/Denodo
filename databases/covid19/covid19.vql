@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE DATABASE covid19 'Used to analyze the impact of COVID-19';
+
+ALTER DATABASE covid19
+  CHARSET DEFAULT;
+

@@ -1,0 +1,610 @@
+﻿CREATE OR REPLACE WRAPPER JSON analysis
+    FOLDER = '/1 - connectivity/base views'
+    DATASOURCENAME=analysis
+    TUPLEROOT '/JSONFile'
+    OUTPUTSCHEMA (jsonfile = 'JSONFile' : REGISTER OF (
+        paper_id = 'paper_id' : 'java.lang.String',
+        metadata = 'metadata' : REGISTER OF (
+            title = 'title' : 'java.lang.String',
+            authors = 'authors' : ARRAY OF (
+                authors = 'authors' : REGISTER OF (
+                    first = 'first' : 'java.lang.String',
+                    middle = 'middle' : ARRAY OF (
+                        middle = 'middle' : REGISTER OF (
+                            field_0 = 'field_0' : 'java.lang.String'
+                        )
+                    ),
+                    last = 'last' : 'java.lang.String',
+                    suffix = 'suffix' : 'java.lang.String',
+                    affiliation = 'affiliation' : REGISTER OF (
+                        laboratory = 'laboratory' : 'java.lang.String',
+                        location = 'location' : REGISTER OF (
+                            addrline = 'addrLine' : 'java.lang.String',
+                            country = 'country' : 'java.lang.String',
+                            postcode = 'postCode' : 'java.lang.String',
+                            settlement = 'settlement' : 'java.lang.String'
+                        ),
+                        institution = 'institution' : 'java.lang.String'
+                    ),
+                    email = 'email' : 'java.lang.String'
+                )
+            )
+        ),
+        abstract = 'abstract' : ARRAY OF (
+            abstract = 'abstract' : REGISTER OF (
+                field_0 = 'field_0' : 'java.lang.String'
+            )
+        ),
+        body_text = 'body_text' : ARRAY OF (
+            body_text = 'body_text' : REGISTER OF (
+                text = 'text' : 'java.lang.String',
+                cite_spans = 'cite_spans' : ARRAY OF (
+                    cite_spans = 'cite_spans' : REGISTER OF (
+                        field_0 = 'field_0' : 'java.lang.String'
+                    )
+                ),
+                ref_spans = 'ref_spans' : ARRAY OF (
+                    ref_spans = 'ref_spans' : REGISTER OF (
+                        start = 'start' : 'java.lang.Integer',
+                        end = 'end' : 'java.lang.Integer',
+                        text = 'text' : 'java.lang.String',
+                        ref_id = 'ref_id' : 'java.lang.String'
+                    )
+                ),
+                section = 'section' : 'java.lang.String'
+            )
+        ),
+        bib_entries = 'bib_entries' : REGISTER OF (
+            bibref32 = 'BIBREF32' : REGISTER OF (
+                ref_id = 'ref_id' : 'java.lang.String',
+                title = 'title' : 'java.lang.String',
+                authors = 'authors' : ARRAY OF (
+                    authors = 'authors' : REGISTER OF (
+                        field_0 = 'field_0' : 'java.lang.String'
+                    )
+                ),
+                year = 'year' : 'java.lang.String',
+                venue = 'venue' : 'java.lang.String',
+                volume = 'volume' : 'java.lang.String',
+                issn = 'issn' : 'java.lang.String',
+                pages = 'pages' : 'java.lang.String'
+            ),
+            bibref43 = 'BIBREF43' : REGISTER OF (
+                ref_id = 'ref_id' : 'java.lang.String',
+                title = 'title' : 'java.lang.String',
+                authors = 'authors' : ARRAY OF (
+                    authors = 'authors' : REGISTER OF (
+                        field_0 = 'field_0' : 'java.lang.String'
+                    )
+                ),
+                year = 'year' : 'java.lang.String',
+                venue = 'venue' : 'java.lang.String',
+                volume = 'volume' : 'java.lang.String',
+                issn = 'issn' : 'java.lang.String',
+                pages = 'pages' : 'java.lang.String'
+            ),
+            bibref48 = 'BIBREF48' : REGISTER OF (
+                ref_id = 'ref_id' : 'java.lang.String',
+                title = 'title' : 'java.lang.String',
+                authors = 'authors' : ARRAY OF (
+                    authors = 'authors' : REGISTER OF (
+                        field_0 = 'field_0' : 'java.lang.String'
+                    )
+                ),
+                year = 'year' : 'java.lang.String',
+                venue = 'venue' : 'java.lang.String',
+                volume = 'volume' : 'java.lang.String',
+                issn = 'issn' : 'java.lang.String',
+                pages = 'pages' : 'java.lang.String'
+            ),
+            bibref72 = 'BIBREF72' : REGISTER OF (
+                ref_id = 'ref_id' : 'java.lang.String',
+                title = 'title' : 'java.lang.String',
+                authors = 'authors' : ARRAY OF (
+                    authors = 'authors' : REGISTER OF (
+                        field_0 = 'field_0' : 'java.lang.String'
+                    )
+                ),
+                year = 'year' : 'java.lang.String',
+                venue = 'venue' : 'java.lang.String',
+                volume = 'volume' : 'java.lang.String',
+                issn = 'issn' : 'java.lang.String',
+                pages = 'pages' : 'java.lang.String'
+            ),
+            bibref87 = 'BIBREF87' : REGISTER OF (
+                ref_id = 'ref_id' : 'java.lang.String',
+                title = 'title' : 'java.lang.String',
+                authors = 'authors' : ARRAY OF (
+                    authors = 'authors' : REGISTER OF (
+                        field_0 = 'field_0' : 'java.lang.String'
+                    )
+                ),
+                year = 'year' : 'java.lang.String',
+                venue = 'venue' : 'java.lang.String',
+                volume = 'volume' : 'java.lang.String',
+                issn = 'issn' : 'java.lang.String',
+                pages = 'pages' : 'java.lang.String'
+            ),
+            bibref123 = 'BIBREF123' : REGISTER OF (
+                ref_id = 'ref_id' : 'java.lang.String',
+                title = 'title' : 'java.lang.String',
+                authors = 'authors' : ARRAY OF (
+                    authors = 'authors' : REGISTER OF (
+                        field_0 = 'field_0' : 'java.lang.String'
+                    )
+                ),
+                year = 'year' : 'java.lang.String',
+                venue = 'venue' : 'java.lang.String',
+                volume = 'volume' : 'java.lang.String',
+                issn = 'issn' : 'java.lang.String',
+                pages = 'pages' : 'java.lang.String'
+            ),
+            bibref127 = 'BIBREF127' : REGISTER OF (
+                ref_id = 'ref_id' : 'java.lang.String',
+                title = 'title' : 'java.lang.String',
+                authors = 'authors' : ARRAY OF (
+                    authors = 'authors' : REGISTER OF (
+                        field_0 = 'field_0' : 'java.lang.String'
+                    )
+                ),
+                year = 'year' : 'java.lang.String',
+                venue = 'venue' : 'java.lang.String',
+                volume = 'volume' : 'java.lang.String',
+                issn = 'issn' : 'java.lang.String',
+                pages = 'pages' : 'java.lang.String'
+            ),
+            bibref151 = 'BIBREF151' : REGISTER OF (
+                ref_id = 'ref_id' : 'java.lang.String',
+                title = 'title' : 'java.lang.String',
+                authors = 'authors' : ARRAY OF (
+                    authors = 'authors' : REGISTER OF (
+                        field_0 = 'field_0' : 'java.lang.String'
+                    )
+                ),
+                year = 'year' : 'java.lang.String',
+                venue = 'venue' : 'java.lang.String',
+                volume = 'volume' : 'java.lang.String',
+                issn = 'issn' : 'java.lang.String',
+                pages = 'pages' : 'java.lang.String'
+            ),
+            bibref153 = 'BIBREF153' : REGISTER OF (
+                ref_id = 'ref_id' : 'java.lang.String',
+                title = 'title' : 'java.lang.String',
+                authors = 'authors' : ARRAY OF (
+                    authors = 'authors' : REGISTER OF (
+                        field_0 = 'field_0' : 'java.lang.String'
+                    )
+                ),
+                year = 'year' : 'java.lang.String',
+                venue = 'venue' : 'java.lang.String',
+                volume = 'volume' : 'java.lang.String',
+                issn = 'issn' : 'java.lang.String',
+                pages = 'pages' : 'java.lang.String'
+            ),
+            bibref158 = 'BIBREF158' : REGISTER OF (
+                ref_id = 'ref_id' : 'java.lang.String',
+                title = 'title' : 'java.lang.String',
+                authors = 'authors' : ARRAY OF (
+                    authors = 'authors' : REGISTER OF (
+                        field_0 = 'field_0' : 'java.lang.String'
+                    )
+                ),
+                year = 'year' : 'java.lang.String',
+                venue = 'venue' : 'java.lang.String',
+                volume = 'volume' : 'java.lang.String',
+                issn = 'issn' : 'java.lang.String',
+                pages = 'pages' : 'java.lang.String'
+            ),
+            bibref163 = 'BIBREF163' : REGISTER OF (
+                ref_id = 'ref_id' : 'java.lang.String',
+                title = 'title' : 'java.lang.String',
+                authors = 'authors' : ARRAY OF (
+                    authors = 'authors' : REGISTER OF (
+                        field_0 = 'field_0' : 'java.lang.String'
+                    )
+                ),
+                year = 'year' : 'java.lang.String',
+                venue = 'venue' : 'java.lang.String',
+                volume = 'volume' : 'java.lang.String',
+                issn = 'issn' : 'java.lang.String',
+                pages = 'pages' : 'java.lang.String'
+            ),
+            bibref170 = 'BIBREF170' : REGISTER OF (
+                ref_id = 'ref_id' : 'java.lang.String',
+                title = 'title' : 'java.lang.String',
+                authors = 'authors' : ARRAY OF (
+                    authors = 'authors' : REGISTER OF (
+                        field_0 = 'field_0' : 'java.lang.String'
+                    )
+                ),
+                year = 'year' : 'java.lang.String',
+                venue = 'venue' : 'java.lang.String',
+                volume = 'volume' : 'java.lang.String',
+                issn = 'issn' : 'java.lang.String',
+                pages = 'pages' : 'java.lang.String'
+            ),
+            bibref218 = 'BIBREF218' : REGISTER OF (
+                ref_id = 'ref_id' : 'java.lang.String',
+                title = 'title' : 'java.lang.String',
+                authors = 'authors' : ARRAY OF (
+                    authors = 'authors' : REGISTER OF (
+                        field_0 = 'field_0' : 'java.lang.String'
+                    )
+                ),
+                year = 'year' : 'java.lang.String',
+                venue = 'venue' : 'java.lang.String',
+                volume = 'volume' : 'java.lang.String',
+                issn = 'issn' : 'java.lang.String',
+                pages = 'pages' : 'java.lang.String'
+            ),
+            bibref223 = 'BIBREF223' : REGISTER OF (
+                ref_id = 'ref_id' : 'java.lang.String',
+                title = 'title' : 'java.lang.String',
+                authors = 'authors' : ARRAY OF (
+                    authors = 'authors' : REGISTER OF (
+                        field_0 = 'field_0' : 'java.lang.String'
+                    )
+                ),
+                year = 'year' : 'java.lang.String',
+                venue = 'venue' : 'java.lang.String',
+                volume = 'volume' : 'java.lang.String',
+                issn = 'issn' : 'java.lang.String',
+                pages = 'pages' : 'java.lang.String'
+            )
+        ),
+        ref_entries = 'ref_entries' : REGISTER OF (
+            tabref0 = 'TABREF0' : REGISTER OF (
+                text = 'text' : 'java.lang.String',
+                latex = 'latex' : 'java.lang.String',
+                type = 'type' : 'java.lang.String'
+            )
+        ),
+        back_matter = 'back_matter' : ARRAY OF (
+            back_matter = 'back_matter' : REGISTER OF (
+                field_0 = 'field_0' : 'java.lang.String'
+            )
+        )
+    )
+    );
+
+CREATE OR REPLACE TYPE analysis_metadata_authors_authors_middle_middle AS REGISTER OF (field_0:text);
+
+CREATE OR REPLACE TYPE analysis_metadata_authors_authors_middle AS ARRAY OF analysis_metadata_authors_authors_middle_middle;
+
+CREATE OR REPLACE TYPE analysis_metadata_authors_authors_affiliation_location AS REGISTER OF (addrline:text, country:text, postcode:text, settlement:text);
+
+CREATE OR REPLACE TYPE analysis_metadata_authors_authors_affiliation AS REGISTER OF (laboratory:text, location:analysis_metadata_authors_authors_affiliation_location, institution:text);
+
+CREATE OR REPLACE TYPE analysis_metadata_authors_authors AS REGISTER OF (first:text, middle:analysis_metadata_authors_authors_middle, last:text, suffix:text, affiliation:analysis_metadata_authors_authors_affiliation, email:text);
+
+CREATE OR REPLACE TYPE analysis_metadata_authors AS ARRAY OF analysis_metadata_authors_authors;
+
+CREATE OR REPLACE TYPE analysis_metadata AS REGISTER OF (title:text, authors:analysis_metadata_authors);
+
+CREATE OR REPLACE TYPE analysis_abstract_abstract AS REGISTER OF (field_0:text);
+
+CREATE OR REPLACE TYPE analysis_abstract AS ARRAY OF analysis_abstract_abstract;
+
+CREATE OR REPLACE TYPE analysis_body_text_body_text_cite_spans_cite_spans AS REGISTER OF (field_0:text);
+
+CREATE OR REPLACE TYPE analysis_body_text_body_text_cite_spans AS ARRAY OF analysis_body_text_body_text_cite_spans_cite_spans;
+
+CREATE OR REPLACE TYPE analysis_body_text_body_text_ref_spans_ref_spans AS REGISTER OF (start:int, end:int, text:text, ref_id:text);
+
+CREATE OR REPLACE TYPE analysis_body_text_body_text_ref_spans AS ARRAY OF analysis_body_text_body_text_ref_spans_ref_spans;
+
+CREATE OR REPLACE TYPE analysis_body_text_body_text AS REGISTER OF (text:text, cite_spans:analysis_body_text_body_text_cite_spans, ref_spans:analysis_body_text_body_text_ref_spans, section:text);
+
+CREATE OR REPLACE TYPE analysis_body_text AS ARRAY OF analysis_body_text_body_text;
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref32_authors_authors AS REGISTER OF (field_0:text);
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref32_authors AS ARRAY OF analysis_bib_entries_bibref32_authors_authors;
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref32 AS REGISTER OF (ref_id:text, title:text, authors:analysis_bib_entries_bibref32_authors, year:text, venue:text, volume:text, issn:text, pages:text);
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref43_authors_authors AS REGISTER OF (field_0:text);
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref43_authors AS ARRAY OF analysis_bib_entries_bibref43_authors_authors;
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref43 AS REGISTER OF (ref_id:text, title:text, authors:analysis_bib_entries_bibref43_authors, year:text, venue:text, volume:text, issn:text, pages:text);
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref48_authors_authors AS REGISTER OF (field_0:text);
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref48_authors AS ARRAY OF analysis_bib_entries_bibref48_authors_authors;
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref48 AS REGISTER OF (ref_id:text, title:text, authors:analysis_bib_entries_bibref48_authors, year:text, venue:text, volume:text, issn:text, pages:text);
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref72_authors_authors AS REGISTER OF (field_0:text);
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref72_authors AS ARRAY OF analysis_bib_entries_bibref72_authors_authors;
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref72 AS REGISTER OF (ref_id:text, title:text, authors:analysis_bib_entries_bibref72_authors, year:text, venue:text, volume:text, issn:text, pages:text);
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref87_authors_authors AS REGISTER OF (field_0:text);
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref87_authors AS ARRAY OF analysis_bib_entries_bibref87_authors_authors;
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref87 AS REGISTER OF (ref_id:text, title:text, authors:analysis_bib_entries_bibref87_authors, year:text, venue:text, volume:text, issn:text, pages:text);
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref123_authors_authors AS REGISTER OF (field_0:text);
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref123_authors AS ARRAY OF analysis_bib_entries_bibref123_authors_authors;
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref123 AS REGISTER OF (ref_id:text, title:text, authors:analysis_bib_entries_bibref123_authors, year:text, venue:text, volume:text, issn:text, pages:text);
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref127_authors_authors AS REGISTER OF (field_0:text);
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref127_authors AS ARRAY OF analysis_bib_entries_bibref127_authors_authors;
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref127 AS REGISTER OF (ref_id:text, title:text, authors:analysis_bib_entries_bibref127_authors, year:text, venue:text, volume:text, issn:text, pages:text);
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref151_authors_authors AS REGISTER OF (field_0:text);
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref151_authors AS ARRAY OF analysis_bib_entries_bibref151_authors_authors;
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref151 AS REGISTER OF (ref_id:text, title:text, authors:analysis_bib_entries_bibref151_authors, year:text, venue:text, volume:text, issn:text, pages:text);
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref153_authors_authors AS REGISTER OF (field_0:text);
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref153_authors AS ARRAY OF analysis_bib_entries_bibref153_authors_authors;
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref153 AS REGISTER OF (ref_id:text, title:text, authors:analysis_bib_entries_bibref153_authors, year:text, venue:text, volume:text, issn:text, pages:text);
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref158_authors_authors AS REGISTER OF (field_0:text);
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref158_authors AS ARRAY OF analysis_bib_entries_bibref158_authors_authors;
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref158 AS REGISTER OF (ref_id:text, title:text, authors:analysis_bib_entries_bibref158_authors, year:text, venue:text, volume:text, issn:text, pages:text);
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref163_authors_authors AS REGISTER OF (field_0:text);
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref163_authors AS ARRAY OF analysis_bib_entries_bibref163_authors_authors;
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref163 AS REGISTER OF (ref_id:text, title:text, authors:analysis_bib_entries_bibref163_authors, year:text, venue:text, volume:text, issn:text, pages:text);
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref170_authors_authors AS REGISTER OF (field_0:text);
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref170_authors AS ARRAY OF analysis_bib_entries_bibref170_authors_authors;
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref170 AS REGISTER OF (ref_id:text, title:text, authors:analysis_bib_entries_bibref170_authors, year:text, venue:text, volume:text, issn:text, pages:text);
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref218_authors_authors AS REGISTER OF (field_0:text);
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref218_authors AS ARRAY OF analysis_bib_entries_bibref218_authors_authors;
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref218 AS REGISTER OF (ref_id:text, title:text, authors:analysis_bib_entries_bibref218_authors, year:text, venue:text, volume:text, issn:text, pages:text);
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref223_authors_authors AS REGISTER OF (field_0:text);
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref223_authors AS ARRAY OF analysis_bib_entries_bibref223_authors_authors;
+
+CREATE OR REPLACE TYPE analysis_bib_entries_bibref223 AS REGISTER OF (ref_id:text, title:text, authors:analysis_bib_entries_bibref223_authors, year:text, venue:text, volume:text, issn:text, pages:text);
+
+CREATE OR REPLACE TYPE analysis_bib_entries AS REGISTER OF (bibref32:analysis_bib_entries_bibref32, bibref43:analysis_bib_entries_bibref43, bibref48:analysis_bib_entries_bibref48, bibref72:analysis_bib_entries_bibref72, bibref87:analysis_bib_entries_bibref87, bibref123:analysis_bib_entries_bibref123, bibref127:analysis_bib_entries_bibref127, bibref151:analysis_bib_entries_bibref151, bibref153:analysis_bib_entries_bibref153, bibref158:analysis_bib_entries_bibref158, bibref163:analysis_bib_entries_bibref163, bibref170:analysis_bib_entries_bibref170, bibref218:analysis_bib_entries_bibref218, bibref223:analysis_bib_entries_bibref223);
+
+CREATE OR REPLACE TYPE analysis_ref_entries_tabref0 AS REGISTER OF (text:text, latex:text, type:text);
+
+CREATE OR REPLACE TYPE analysis_ref_entries AS REGISTER OF (tabref0:analysis_ref_entries_tabref0);
+
+CREATE OR REPLACE TABLE bv_covid_analysis I18N us_est (
+        paper_id:text, 
+        metadata:analysis_metadata, 
+        abstract:analysis_abstract, 
+        body_text:analysis_body_text, 
+        bib_entries:analysis_bib_entries, 
+        ref_entries:analysis_ref_entries, 
+        back_matter:analysis_abstract
+    )
+    FOLDER = '/1 - connectivity/base views'
+    PRIMARY KEY ( 'paper_id' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD analysis(
+        I18N us_est
+        CONSTRAINTS (
+             ADD paper_id NOS ZERO ()
+             ADD metadata NOS ZERO ()
+             ADD metadata.title NOS ZERO ()
+             ADD metadata.authors NOS ZERO ()
+             ADD metadata.authors NOS ZERO ()
+             ADD metadata.authors.first NOS ZERO ()
+             ADD metadata.authors.middle NOS ZERO ()
+             ADD metadata.authors.middle NOS ZERO ()
+             ADD metadata.authors.middle.field_0 NOS ZERO ()
+             ADD metadata.authors.last NOS ZERO ()
+             ADD metadata.authors.suffix NOS ZERO ()
+             ADD metadata.authors.affiliation NOS ZERO ()
+             ADD metadata.authors.affiliation.laboratory NOS ZERO ()
+             ADD metadata.authors.affiliation.location NOS ZERO ()
+             ADD metadata.authors.affiliation.location.addrline NOS ZERO ()
+             ADD metadata.authors.affiliation.location.country NOS ZERO ()
+             ADD metadata.authors.affiliation.location.postcode NOS ZERO ()
+             ADD metadata.authors.affiliation.location.settlement NOS ZERO ()
+             ADD metadata.authors.affiliation.institution NOS ZERO ()
+             ADD metadata.authors.email NOS ZERO ()
+             ADD abstract NOS ZERO ()
+             ADD abstract NOS ZERO ()
+             ADD abstract.field_0 NOS ZERO ()
+             ADD body_text NOS ZERO ()
+             ADD body_text NOS ZERO ()
+             ADD body_text.text NOS ZERO ()
+             ADD body_text.cite_spans NOS ZERO ()
+             ADD body_text.cite_spans NOS ZERO ()
+             ADD body_text.cite_spans.field_0 NOS ZERO ()
+             ADD body_text.ref_spans NOS ZERO ()
+             ADD body_text.ref_spans NOS ZERO ()
+             ADD body_text.ref_spans.start NOS ZERO ()
+             ADD body_text.ref_spans.end NOS ZERO ()
+             ADD body_text.ref_spans.text NOS ZERO ()
+             ADD body_text.ref_spans.ref_id NOS ZERO ()
+             ADD body_text.section NOS ZERO ()
+             ADD bib_entries NOS ZERO ()
+             ADD bib_entries.bibref32 NOS ZERO ()
+             ADD bib_entries.bibref32.ref_id NOS ZERO ()
+             ADD bib_entries.bibref32.title NOS ZERO ()
+             ADD bib_entries.bibref32.authors NOS ZERO ()
+             ADD bib_entries.bibref32.authors NOS ZERO ()
+             ADD bib_entries.bibref32.authors.field_0 NOS ZERO ()
+             ADD bib_entries.bibref32.year NOS ZERO ()
+             ADD bib_entries.bibref32.venue NOS ZERO ()
+             ADD bib_entries.bibref32.volume NOS ZERO ()
+             ADD bib_entries.bibref32.issn NOS ZERO ()
+             ADD bib_entries.bibref32.pages NOS ZERO ()
+             ADD bib_entries.bibref43 NOS ZERO ()
+             ADD bib_entries.bibref43.ref_id NOS ZERO ()
+             ADD bib_entries.bibref43.title NOS ZERO ()
+             ADD bib_entries.bibref43.authors NOS ZERO ()
+             ADD bib_entries.bibref43.authors NOS ZERO ()
+             ADD bib_entries.bibref43.authors.field_0 NOS ZERO ()
+             ADD bib_entries.bibref43.year NOS ZERO ()
+             ADD bib_entries.bibref43.venue NOS ZERO ()
+             ADD bib_entries.bibref43.volume NOS ZERO ()
+             ADD bib_entries.bibref43.issn NOS ZERO ()
+             ADD bib_entries.bibref43.pages NOS ZERO ()
+             ADD bib_entries.bibref48 NOS ZERO ()
+             ADD bib_entries.bibref48.ref_id NOS ZERO ()
+             ADD bib_entries.bibref48.title NOS ZERO ()
+             ADD bib_entries.bibref48.authors NOS ZERO ()
+             ADD bib_entries.bibref48.authors NOS ZERO ()
+             ADD bib_entries.bibref48.authors.field_0 NOS ZERO ()
+             ADD bib_entries.bibref48.year NOS ZERO ()
+             ADD bib_entries.bibref48.venue NOS ZERO ()
+             ADD bib_entries.bibref48.volume NOS ZERO ()
+             ADD bib_entries.bibref48.issn NOS ZERO ()
+             ADD bib_entries.bibref48.pages NOS ZERO ()
+             ADD bib_entries.bibref72 NOS ZERO ()
+             ADD bib_entries.bibref72.ref_id NOS ZERO ()
+             ADD bib_entries.bibref72.title NOS ZERO ()
+             ADD bib_entries.bibref72.authors NOS ZERO ()
+             ADD bib_entries.bibref72.authors NOS ZERO ()
+             ADD bib_entries.bibref72.authors.field_0 NOS ZERO ()
+             ADD bib_entries.bibref72.year NOS ZERO ()
+             ADD bib_entries.bibref72.venue NOS ZERO ()
+             ADD bib_entries.bibref72.volume NOS ZERO ()
+             ADD bib_entries.bibref72.issn NOS ZERO ()
+             ADD bib_entries.bibref72.pages NOS ZERO ()
+             ADD bib_entries.bibref87 NOS ZERO ()
+             ADD bib_entries.bibref87.ref_id NOS ZERO ()
+             ADD bib_entries.bibref87.title NOS ZERO ()
+             ADD bib_entries.bibref87.authors NOS ZERO ()
+             ADD bib_entries.bibref87.authors NOS ZERO ()
+             ADD bib_entries.bibref87.authors.field_0 NOS ZERO ()
+             ADD bib_entries.bibref87.year NOS ZERO ()
+             ADD bib_entries.bibref87.venue NOS ZERO ()
+             ADD bib_entries.bibref87.volume NOS ZERO ()
+             ADD bib_entries.bibref87.issn NOS ZERO ()
+             ADD bib_entries.bibref87.pages NOS ZERO ()
+             ADD bib_entries.bibref123 NOS ZERO ()
+             ADD bib_entries.bibref123.ref_id NOS ZERO ()
+             ADD bib_entries.bibref123.title NOS ZERO ()
+             ADD bib_entries.bibref123.authors NOS ZERO ()
+             ADD bib_entries.bibref123.authors NOS ZERO ()
+             ADD bib_entries.bibref123.authors.field_0 NOS ZERO ()
+             ADD bib_entries.bibref123.year NOS ZERO ()
+             ADD bib_entries.bibref123.venue NOS ZERO ()
+             ADD bib_entries.bibref123.volume NOS ZERO ()
+             ADD bib_entries.bibref123.issn NOS ZERO ()
+             ADD bib_entries.bibref123.pages NOS ZERO ()
+             ADD bib_entries.bibref127 NOS ZERO ()
+             ADD bib_entries.bibref127.ref_id NOS ZERO ()
+             ADD bib_entries.bibref127.title NOS ZERO ()
+             ADD bib_entries.bibref127.authors NOS ZERO ()
+             ADD bib_entries.bibref127.authors NOS ZERO ()
+             ADD bib_entries.bibref127.authors.field_0 NOS ZERO ()
+             ADD bib_entries.bibref127.year NOS ZERO ()
+             ADD bib_entries.bibref127.venue NOS ZERO ()
+             ADD bib_entries.bibref127.volume NOS ZERO ()
+             ADD bib_entries.bibref127.issn NOS ZERO ()
+             ADD bib_entries.bibref127.pages NOS ZERO ()
+             ADD bib_entries.bibref151 NOS ZERO ()
+             ADD bib_entries.bibref151.ref_id NOS ZERO ()
+             ADD bib_entries.bibref151.title NOS ZERO ()
+             ADD bib_entries.bibref151.authors NOS ZERO ()
+             ADD bib_entries.bibref151.authors NOS ZERO ()
+             ADD bib_entries.bibref151.authors.field_0 NOS ZERO ()
+             ADD bib_entries.bibref151.year NOS ZERO ()
+             ADD bib_entries.bibref151.venue NOS ZERO ()
+             ADD bib_entries.bibref151.volume NOS ZERO ()
+             ADD bib_entries.bibref151.issn NOS ZERO ()
+             ADD bib_entries.bibref151.pages NOS ZERO ()
+             ADD bib_entries.bibref153 NOS ZERO ()
+             ADD bib_entries.bibref153.ref_id NOS ZERO ()
+             ADD bib_entries.bibref153.title NOS ZERO ()
+             ADD bib_entries.bibref153.authors NOS ZERO ()
+             ADD bib_entries.bibref153.authors NOS ZERO ()
+             ADD bib_entries.bibref153.authors.field_0 NOS ZERO ()
+             ADD bib_entries.bibref153.year NOS ZERO ()
+             ADD bib_entries.bibref153.venue NOS ZERO ()
+             ADD bib_entries.bibref153.volume NOS ZERO ()
+             ADD bib_entries.bibref153.issn NOS ZERO ()
+             ADD bib_entries.bibref153.pages NOS ZERO ()
+             ADD bib_entries.bibref158 NOS ZERO ()
+             ADD bib_entries.bibref158.ref_id NOS ZERO ()
+             ADD bib_entries.bibref158.title NOS ZERO ()
+             ADD bib_entries.bibref158.authors NOS ZERO ()
+             ADD bib_entries.bibref158.authors NOS ZERO ()
+             ADD bib_entries.bibref158.authors.field_0 NOS ZERO ()
+             ADD bib_entries.bibref158.year NOS ZERO ()
+             ADD bib_entries.bibref158.venue NOS ZERO ()
+             ADD bib_entries.bibref158.volume NOS ZERO ()
+             ADD bib_entries.bibref158.issn NOS ZERO ()
+             ADD bib_entries.bibref158.pages NOS ZERO ()
+             ADD bib_entries.bibref163 NOS ZERO ()
+             ADD bib_entries.bibref163.ref_id NOS ZERO ()
+             ADD bib_entries.bibref163.title NOS ZERO ()
+             ADD bib_entries.bibref163.authors NOS ZERO ()
+             ADD bib_entries.bibref163.authors NOS ZERO ()
+             ADD bib_entries.bibref163.authors.field_0 NOS ZERO ()
+             ADD bib_entries.bibref163.year NOS ZERO ()
+             ADD bib_entries.bibref163.venue NOS ZERO ()
+             ADD bib_entries.bibref163.volume NOS ZERO ()
+             ADD bib_entries.bibref163.issn NOS ZERO ()
+             ADD bib_entries.bibref163.pages NOS ZERO ()
+             ADD bib_entries.bibref170 NOS ZERO ()
+             ADD bib_entries.bibref170.ref_id NOS ZERO ()
+             ADD bib_entries.bibref170.title NOS ZERO ()
+             ADD bib_entries.bibref170.authors NOS ZERO ()
+             ADD bib_entries.bibref170.authors NOS ZERO ()
+             ADD bib_entries.bibref170.authors.field_0 NOS ZERO ()
+             ADD bib_entries.bibref170.year NOS ZERO ()
+             ADD bib_entries.bibref170.venue NOS ZERO ()
+             ADD bib_entries.bibref170.volume NOS ZERO ()
+             ADD bib_entries.bibref170.issn NOS ZERO ()
+             ADD bib_entries.bibref170.pages NOS ZERO ()
+             ADD bib_entries.bibref218 NOS ZERO ()
+             ADD bib_entries.bibref218.ref_id NOS ZERO ()
+             ADD bib_entries.bibref218.title NOS ZERO ()
+             ADD bib_entries.bibref218.authors NOS ZERO ()
+             ADD bib_entries.bibref218.authors NOS ZERO ()
+             ADD bib_entries.bibref218.authors.field_0 NOS ZERO ()
+             ADD bib_entries.bibref218.year NOS ZERO ()
+             ADD bib_entries.bibref218.venue NOS ZERO ()
+             ADD bib_entries.bibref218.volume NOS ZERO ()
+             ADD bib_entries.bibref218.issn NOS ZERO ()
+             ADD bib_entries.bibref218.pages NOS ZERO ()
+             ADD bib_entries.bibref223 NOS ZERO ()
+             ADD bib_entries.bibref223.ref_id NOS ZERO ()
+             ADD bib_entries.bibref223.title NOS ZERO ()
+             ADD bib_entries.bibref223.authors NOS ZERO ()
+             ADD bib_entries.bibref223.authors NOS ZERO ()
+             ADD bib_entries.bibref223.authors.field_0 NOS ZERO ()
+             ADD bib_entries.bibref223.year NOS ZERO ()
+             ADD bib_entries.bibref223.venue NOS ZERO ()
+             ADD bib_entries.bibref223.volume NOS ZERO ()
+             ADD bib_entries.bibref223.issn NOS ZERO ()
+             ADD bib_entries.bibref223.pages NOS ZERO ()
+             ADD ref_entries NOS ZERO ()
+             ADD ref_entries.tabref0 NOS ZERO ()
+             ADD ref_entries.tabref0.text NOS ZERO ()
+             ADD ref_entries.tabref0.latex NOS ZERO ()
+             ADD ref_entries.tabref0.type NOS ZERO ()
+             ADD back_matter NOS ZERO ()
+             ADD back_matter NOS ZERO ()
+             ADD back_matter.field_0 NOS ZERO ()
+        )
+        OUTPUTLIST (abstract, back_matter, bib_entries, body_text, metadata, paper_id, ref_entries
+        )
+        WRAPPER (json analysis)
+    );
+

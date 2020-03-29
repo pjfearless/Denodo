@@ -1,0 +1,116 @@
+﻿CREATE OR REPLACE WRAPPER JSON smartablestats_7144
+    FOLDER = '/1 - connectivity/data-sources/covid'
+    DATASOURCENAME=smartablestats
+    TUPLEROOT '/JSONFile/stats/breakdowns'
+    OUTPUTSCHEMA (jsonfile = 'JSONFile' : REGISTER OF (
+        location_0 = 'location' : REGISTER OF (
+            long = 'long' : 'java.lang.String',
+            countryorregion = 'countryOrRegion' : 'java.lang.String',
+            provinceorstate = 'provinceOrState' : 'java.lang.String',
+            county = 'county' : 'java.lang.String',
+            isocode = 'isoCode' : 'java.lang.String',
+            lat = 'lat' : 'java.lang.String'
+        ),
+        updateddatetime = 'updatedDateTime' : 'java.lang.String',
+        totalconfirmedcases_0 = 'JSONFile.stats.totalConfirmedCases' : 'java.lang.Integer',
+        newlyconfirmedcases_0 = 'JSONFile.stats.newlyConfirmedCases' : 'java.lang.Integer',
+        totaldeaths_0 = 'JSONFile.stats.totalDeaths' : 'java.lang.Integer',
+        newdeaths_0 = 'JSONFile.stats.newDeaths' : 'java.lang.Integer',
+        totalrecoveredcases_0 = 'JSONFile.stats.totalRecoveredCases' : 'java.lang.Integer',
+        newlyrecoveredcases_0 = 'JSONFile.stats.newlyRecoveredCases' : 'java.lang.Integer',
+        history = 'JSONFile.stats.history' : ARRAY OF (
+            history = 'history' : REGISTER OF (
+                date = 'date' : 'java.lang.String',
+                confirmed = 'confirmed' : 'java.lang.Integer',
+                deaths = 'deaths' : 'java.lang.Integer',
+                recovered = 'recovered' : 'java.lang.Integer'
+            )
+        ),
+        location = 'JSONFile.stats.breakdowns.location' : REGISTER OF (
+            long = 'long' : 'java.lang.Double',
+            countryorregion = 'countryOrRegion' : 'java.lang.String',
+            provinceorstate = 'provinceOrState' : 'java.lang.String',
+            county = 'county' : 'java.lang.String',
+            isocode = 'isoCode' : 'java.lang.String',
+            lat = 'lat' : 'java.lang.Double'
+        ),
+        totalconfirmedcases = 'JSONFile.stats.breakdowns.totalConfirmedCases' : 'java.lang.Integer',
+        newlyconfirmedcases = 'JSONFile.stats.breakdowns.newlyConfirmedCases' : 'java.lang.Integer',
+        totaldeaths = 'JSONFile.stats.breakdowns.totalDeaths' : 'java.lang.Integer',
+        newdeaths = 'JSONFile.stats.breakdowns.newDeaths' : 'java.lang.Integer',
+        totalrecoveredcases = 'JSONFile.stats.breakdowns.totalRecoveredCases' : 'java.lang.Integer',
+        newlyrecoveredcases = 'JSONFile.stats.breakdowns.newlyRecoveredCases' : 'java.lang.Integer'
+    )
+    );
+
+CREATE OR REPLACE TYPE smartablestats_location_0 AS REGISTER OF (long:text, countryorregion:text, provinceorstate:text, county:text, isocode:text, lat:text);
+
+CREATE OR REPLACE TYPE smartablestats_history_history AS REGISTER OF (date:text, confirmed:int, deaths:int, recovered:int);
+
+CREATE OR REPLACE TYPE smartablestats_history AS ARRAY OF smartablestats_history_history;
+
+CREATE OR REPLACE TYPE smartablestats_location_4605 AS REGISTER OF (long:double, countryorregion:text, provinceorstate:text, county:text, isocode:text, lat:double);
+
+CREATE OR REPLACE TABLE bv_corona_virus_global_stats I18N us_est (
+        location_0:smartablestats_location_0, 
+        updateddatetime:text, 
+        totalconfirmedcases_0:int, 
+        newlyconfirmedcases_0:int, 
+        totaldeaths_0:int, 
+        newdeaths_0:int, 
+        totalrecoveredcases_0:int, 
+        newlyrecoveredcases_0:int, 
+        history:smartablestats_history, 
+        location:smartablestats_location_4605, 
+        totalconfirmedcases:int, 
+        newlyconfirmedcases:int, 
+        totaldeaths:int, 
+        newdeaths:int, 
+        totalrecoveredcases:int, 
+        newlyrecoveredcases:int
+    )
+    FOLDER = '/1 - connectivity/data-sources/covid'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD smartablestats(
+        I18N us_est
+        CONSTRAINTS (
+             ADD location_0 NOS ZERO ()
+             ADD location_0.long NOS ZERO ()
+             ADD location_0.countryorregion NOS ZERO ()
+             ADD location_0.provinceorstate NOS ZERO ()
+             ADD location_0.county NOS ZERO ()
+             ADD location_0.isocode NOS ZERO ()
+             ADD location_0.lat NOS ZERO ()
+             ADD updateddatetime NOS ZERO ()
+             ADD totalconfirmedcases_0 NOS ZERO ()
+             ADD newlyconfirmedcases_0 NOS ZERO ()
+             ADD totaldeaths_0 NOS ZERO ()
+             ADD newdeaths_0 NOS ZERO ()
+             ADD totalrecoveredcases_0 NOS ZERO ()
+             ADD newlyrecoveredcases_0 NOS ZERO ()
+             ADD history NOS ZERO ()
+             ADD history NOS ZERO ()
+             ADD history.date NOS ZERO ()
+             ADD history.confirmed NOS ZERO ()
+             ADD history.deaths NOS ZERO ()
+             ADD history.recovered NOS ZERO ()
+             ADD location NOS ZERO ()
+             ADD location.long NOS ZERO ()
+             ADD location.countryorregion NOS ZERO ()
+             ADD location.provinceorstate NOS ZERO ()
+             ADD location.county NOS ZERO ()
+             ADD location.isocode NOS ZERO ()
+             ADD location.lat NOS ZERO ()
+             ADD totalconfirmedcases NOS ZERO ()
+             ADD newlyconfirmedcases NOS ZERO ()
+             ADD totaldeaths NOS ZERO ()
+             ADD newdeaths NOS ZERO ()
+             ADD totalrecoveredcases NOS ZERO ()
+             ADD newlyrecoveredcases NOS ZERO ()
+        )
+        OUTPUTLIST (history, location, location_0, newdeaths, newdeaths_0, newlyconfirmedcases, newlyconfirmedcases_0, newlyrecoveredcases, newlyrecoveredcases_0, totalconfirmedcases, totalconfirmedcases_0, totaldeaths, totaldeaths_0, totalrecoveredcases, totalrecoveredcases_0, updateddatetime
+        )
+        WRAPPER (json smartablestats_7144)
+    );
+

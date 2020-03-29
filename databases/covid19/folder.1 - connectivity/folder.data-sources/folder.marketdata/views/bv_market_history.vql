@@ -1,0 +1,41 @@
+﻿CREATE OR REPLACE WRAPPER DF market_history
+    FOLDER = '/1 - connectivity/data-sources/marketdata'
+    DATASOURCENAME=market_history
+    OUTPUTSCHEMA (
+        symbol_name = 'symbol_name' (OBL) (DEFAULTVALUE='SNAP') EXTERN,
+        date = 'Date' (OPT),
+        open = 'Open' (OPT),
+        close = 'Close' (OPT),
+        high = 'High' (OPT),
+        low = 'Low' (OPT),
+        volume = 'Volume' (OPT)
+    );
+
+CREATE OR REPLACE TABLE bv_market_history I18N us_est (
+        symbol_name:text (extern), 
+        date:text, 
+        open:text, 
+        close:text, 
+        high:text, 
+        low:text, 
+        volume:text
+    )
+    FOLDER = '/1 - connectivity/data-sources/marketdata'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD market_history(
+        I18N us_est
+        CONSTRAINTS (
+             ADD symbol_name (=) OBL ONE
+             ADD date (=,in) OPT ANY
+             ADD open (=,in) OPT ANY
+             ADD close (=,in) OPT ANY
+             ADD high (=,in) OPT ANY
+             ADD low (=,in) OPT ANY
+             ADD volume (=,in) OPT ANY
+        )
+        OUTPUTLIST (close, date, high, low, open, volume
+        )
+        WRAPPER (df market_history)
+    );
+

@@ -1,0 +1,68 @@
+﻿CREATE OR REPLACE WRAPPER DF research
+    FOLDER = '/1 - connectivity/base views'
+    DATASOURCENAME=research
+    OUTPUTSCHEMA (
+        title = 'Title' (OPT),
+        authors = 'Authors' (OPT),
+        abstract = 'Abstract' (OPT),
+        publishedyear_0 = 'Published Year' (OPT),
+        publishedmonth_0 = 'Published Month' (OPT),
+        journal = 'Journal' (OPT),
+        volume = 'Volume' (OPT),
+        issue = 'Issue' (OPT),
+        pages = 'Pages' (OPT),
+        accessionnumber_0 = 'Accession Number' (OPT),
+        doi = 'DOI' (OPT),
+        ref = 'Ref' (OPT),
+        covidence_0 = 'Covidence #' (OPT),
+        study = 'Study' (OPT),
+        notes = 'Notes' (OPT),
+        tags = 'Tags' (OPT)
+    );
+
+CREATE OR REPLACE TABLE bv_covid_research I18N us_est (
+        title:text, 
+        authors:text, 
+        abstract:text, 
+        publishedyear_0:text, 
+        publishedmonth_0:text, 
+        journal:text, 
+        volume:text, 
+        issue:text, 
+        pages:text, 
+        accessionnumber_0:text, 
+        doi:text, 
+        ref:text, 
+        covidence_0:text, 
+        study:text, 
+        notes:text, 
+        tags:text
+    )
+    FOLDER = '/1 - connectivity/base views'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD research(
+        I18N us_est
+        CONSTRAINTS (
+             ADD title (=,in) OPT ANY
+             ADD authors (=,in) OPT ANY
+             ADD abstract (=,in) OPT ANY
+             ADD publishedyear_0 (=,in) OPT ANY
+             ADD publishedmonth_0 (=,in) OPT ANY
+             ADD journal (=,in) OPT ANY
+             ADD volume (=,in) OPT ANY
+             ADD issue (=,in) OPT ANY
+             ADD pages (=,in) OPT ANY
+             ADD accessionnumber_0 (=,in) OPT ANY
+             ADD doi (=,in) OPT ANY
+             ADD ref (=,in) OPT ANY
+             ADD covidence_0 (=,in) OPT ANY
+             ADD study (=,in) OPT ANY
+             ADD notes (=,in) OPT ANY
+             ADD tags (=,in) OPT ANY
+        )
+        OUTPUTLIST (abstract, accessionnumber_0, authors, covidence_0, doi, issue, journal, notes, pages, publishedmonth_0, publishedyear_0, ref, study, tags, title, volume
+        )
+        WRAPPER (df research)
+    );
+

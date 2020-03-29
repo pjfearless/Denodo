@@ -1,0 +1,38 @@
+﻿CREATE OR REPLACE WRAPPER DF reports
+    FOLDER = '/1 - connectivity/base views'
+    DATASOURCENAME=reports
+    OUTPUTSCHEMA (
+        provincestate_0 = 'Province/State' (OPT),
+        countryregion_0 = 'Country/Region' (OPT),
+        lastupdate_0 = 'Last Update' (OPT),
+        confirmed = 'Confirmed' (OPT),
+        deaths = 'Deaths' (OPT),
+        recovered = 'Recovered' (OPT)
+    );
+
+CREATE OR REPLACE TABLE bv_covid_reports I18N us_est (
+        provincestate_0:text, 
+        countryregion_0:text, 
+        lastupdate_0:text, 
+        confirmed:text, 
+        deaths:text, 
+        recovered:text
+    )
+    FOLDER = '/1 - connectivity/base views'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD reports(
+        I18N us_est
+        CONSTRAINTS (
+             ADD provincestate_0 (=,in) OPT ANY
+             ADD countryregion_0 (=,in) OPT ANY
+             ADD lastupdate_0 (=,in) OPT ANY
+             ADD confirmed (=,in) OPT ANY
+             ADD deaths (=,in) OPT ANY
+             ADD recovered (=,in) OPT ANY
+        )
+        OUTPUTLIST (confirmed, countryregion_0, deaths, lastupdate_0, provincestate_0, recovered
+        )
+        WRAPPER (df reports)
+    );
+

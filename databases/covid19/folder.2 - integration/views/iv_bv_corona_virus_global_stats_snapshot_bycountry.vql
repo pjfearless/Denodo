@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_bv_corona_virus_global_stats_snapshot_bycountry FOLDER = '/2 - integration' AS SELECT (bv_corona_virus_global_stats.location).countryorregion AS countryorregion, (bv_corona_virus_global_stats.location).isocode AS isocode, (bv_corona_virus_global_stats.location).long AS long, (bv_corona_virus_global_stats.location).lat AS lat, bv_corona_virus_global_stats.totalconfirmedcases AS totalconfirmedcases, bv_corona_virus_global_stats.newlyconfirmedcases AS newlyconfirmedcases, bv_corona_virus_global_stats.totaldeaths AS totaldeaths, bv_corona_virus_global_stats.newdeaths AS newdeaths, bv_corona_virus_global_stats.totalrecoveredcases AS totalrecoveredcases, bv_corona_virus_global_stats.newlyrecoveredcases AS newlyrecoveredcases, bv_corona_virus_global_stats.updateddatetime AS updateddatetime FROM bv_corona_virus_global_stats;
+
+ALTER VIEW iv_bv_corona_virus_global_stats_snapshot_bycountry
+ LAYOUT (bv_corona_virus_global_stats = [20, 20, 369, 346]);
+

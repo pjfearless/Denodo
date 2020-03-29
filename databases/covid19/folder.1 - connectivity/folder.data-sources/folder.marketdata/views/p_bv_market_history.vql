@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW p_bv_market_history FOLDER = '/1 - connectivity/data-sources/marketdata' AS SELECT bv_market_history.symbol_name AS symbol_name, cast(bv_market_history.date AS DATE) AS date, bv_market_history.open AS open, bv_market_history.close AS close, bv_market_history.high AS high, bv_market_history.low AS low, bv_market_history.volume AS volume FROM bv_market_history;
+
+ALTER VIEW p_bv_market_history
+ LAYOUT (bv_market_history = [20, 20, 200, 166]);
+

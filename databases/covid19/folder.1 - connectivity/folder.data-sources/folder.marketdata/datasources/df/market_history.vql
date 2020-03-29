@@ -1,0 +1,10 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE DF market_history
+    FOLDER = '/1 - connectivity/data-sources/marketdata'
+    ROUTE HTTP 'http.CommonsHttpClientConnection,120000' GET '${databases.covid19.folder.1 - connectivity.folder.data-sources.folder.marketdata.datasources.df.market_history.ROUTE.HTTP.URL}'
+    AUTHENTICATION OFF
+    PROXY OFF
+    COLUMNDELIMITER = ','
+    ENDOFLINEDELIMITER = '\n'
+    HEADER = TRUE;
+

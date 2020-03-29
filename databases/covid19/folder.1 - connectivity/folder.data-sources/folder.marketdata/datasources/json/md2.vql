@@ -1,0 +1,7 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE JSON md2
+    FOLDER = '/1 - connectivity/data-sources/marketdata'
+    ROUTE HTTP 'http.CommonsHttpClientConnection,120000' GET '${databases.covid19.folder.1 - connectivity.folder.data-sources.folder.marketdata.datasources.json.md2.ROUTE.HTTP.URL}'
+    AUTHENTICATION OFF
+    PROXY OFF;
+

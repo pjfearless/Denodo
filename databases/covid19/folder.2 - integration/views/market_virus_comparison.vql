@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW market_virus_comparison FOLDER = '/2 - integration' AS SELECT p_bv_market_history.symbol_name AS symbol_name, p_bv_market_history.date AS date, cast(p_bv_market_history.open AS DECIMAL) AS open, cast(p_bv_market_history.close AS DECIMAL) AS close, cast(p_bv_market_history.high AS DECIMAL) AS high, cast(p_bv_market_history.low AS DECIMAL) AS low, cast(p_bv_market_history.volume AS DECIMAL) AS volume, iv_corona_virus_global_stats_daily.confirmed AS corona_case_confirmed, iv_corona_virus_global_stats_daily.deaths AS corona_case_deaths, iv_corona_virus_global_stats_daily.recovered AS corona_case_recovered, symbol FROM p_bv_market_history AS p_bv_market_history INNER JOIN iv_corona_virus_global_stats_daily AS iv_corona_virus_global_stats_daily ON p_bv_market_history.date = iv_corona_virus_global_stats_daily.date  USING PARAMETERS ( symbol : text 'SNAP');
+
+ALTER VIEW market_virus_comparison
+ LAYOUT (p_bv_market_history = [205, 214, 200, 166], iv_corona_virus_global_stats_daily = [689, 268, 200, 106]);
+
